@@ -2,18 +2,28 @@ package com.bosch.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int empid;
+	@NotNull(message = "Name cann't ne null")
+	@NotBlank(message = "Name cann't ne blank")
 	private String name;
+	@Email(message = "Invalid Email")
+	@NotBlank(message = "Email cann't ne blank")
 	private String email;
+	@JsonFormat(pattern = "dd-MMM-yyyy")
 	private LocalDate dob;
 	
 	public Employee() {
