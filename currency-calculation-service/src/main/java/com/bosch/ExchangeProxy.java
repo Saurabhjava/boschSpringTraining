@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.bosch.model.CalculationBean;
 
-@FeignClient(name="exchange-service", url = "http://localhost:8081")
+@FeignClient(name="exchangeService")
 public interface ExchangeProxy {
 	
 		@GetMapping("exchangeService/from/{from}/to/{to}")

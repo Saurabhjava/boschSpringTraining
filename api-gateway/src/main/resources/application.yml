@@ -1,0 +1,19 @@
+server:
+  port: 7575
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: exchangeService
+        uri: http://localhost:8081
+        predicates:
+        - Path=/exchangeService/**
+      - id: convertionservice
+        uri: http://localhost:8085
+        predicates:
+        - Path=/calculationService/**
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+    fetch-registry: false
